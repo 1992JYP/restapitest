@@ -6,17 +6,16 @@ using System.Threading.Tasks;
 
 namespace EGIO_DOTNET.API.seibro.bond
 {
-    internal class bondinfo
+    internal class Bondinfo : SeibroAPI
     {
-        int EE;
-        public bondinfo()
+        public string Tetstest;
+        public Bondinfo()
         {
-            EE = 3;
-        }
+            ApiID = "getBondOptionXrcInfo";
 
-        public int getEnum()
-        {
-            return EE;
+            Params = null;
+
+            Tetstest = "154771131354564";
         }
     }
 }

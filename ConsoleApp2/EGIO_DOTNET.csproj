@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="seibro\dls\" />
+    <Folder Include="API\seibro\dls\" />
   </ItemGroup>
 
 </Project>
