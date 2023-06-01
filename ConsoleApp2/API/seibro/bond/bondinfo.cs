@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp2.seibro.bond
+namespace EGIO_DOTNET.API.seibro.bond
 {
     internal class bondinfo
     {
         int EE;
-        public bondinfo() 
+        public bondinfo()
         {
             EE = 3;
         }

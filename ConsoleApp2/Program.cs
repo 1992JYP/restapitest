@@ -1,7 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
-using RestSharp.Authenticators;
 using RestSharp;
-using System.Threading;
 using ConsoleApp2.seibro.bond;
 
 Console.WriteLine("Hello, World!");
