@@ -7,7 +7,7 @@ using ConsoleApp2.seibro.bond;
 Console.WriteLine("Hello, World!");
 
 string url = "http://seibro.or.kr/OpenPlatform/callOpenAPI.jsp";
-string key = "2eae9f793f9c774cab31dda30f744d3310d55500369297339b27bba9c2f7ab63";
+
 string info = "getBondOptionXrcInfo";
 
 string isin = "KR6225693573";
