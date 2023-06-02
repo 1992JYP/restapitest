@@ -1,34 +1,28 @@
 ﻿// See https://aka.ms/new-console-template for more information
-using RestSharp.Authenticators;
 using RestSharp;
-using System.Threading;
-using ConsoleApp2.seibro.bond;
+using EGIO_DOTNET.API.seibro.bond;
+using System.Xml;
 
-Console.WriteLine("Hello, World!");
+Bondinfo bondinfo1 = new("20230531");
 
-string url = "http://seibro.or.kr/OpenPlatform/callOpenAPI.jsp";
-string key = "2eae9f793f9c774cab31dda30f744d3310d55500369297339b27bba9c2f7ab63";
-string info = "getBondOptionXrcInfo";
+RestClient restClient = bondinfo1.Fn_RestClient();
 
-string isin = "KR6225693573";
-string ERLY_RED_DT = "20230530";
+Console.WriteLine(bondinfo1.Fn_returnUrl());
 
+RestRequest request = new RestRequest();
+RestResponse response = await restClient.GetAsync(request);
+Console.WriteLine(response.Content+"\n\n\n\n\n\n");
 
-// 조기상환정보
+XmlDocument xml = new XmlDocument();
+xml.LoadXml(response.Content);
 
-//string finURL = url + "?key=" + key + "&apiId=" + info + "&params=ISIN:" + isin + ",ERLY_RED_DT:" + ERLY_RED_DT;
+XmlNodeList xmlNodeList = xml.GetElementsByTagName("ISIN");
 
-string finURL = url + "?key=" + key + "&apiId=" + info + "&params=ERLY_RED_DT:" + ERLY_RED_DT;
+int i = 0;
+foreach (XmlNode xmlNode in xmlNodeList)
+{
+    Console.WriteLine(i++);
+    Console.WriteLine(xmlNode.Attributes["value"].Value);
+}
 
-Console.WriteLine(finURL);
-
-var options = new RestClientOptions(finURL);
-options.MaxTimeout = 1000;
-var client = new RestClient(options);
-var request = new RestRequest();
-// The cancellation token comes from the caller. You can still make a call without it.
-var response = await client.GetAsync(request);
-Console.WriteLine(response.Content);
-bondinfo bondinfo = new bondinfo();
-Console.WriteLine(bondinfo.getEnum());
 Console.ReadLine();
