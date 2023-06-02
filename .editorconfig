@@ -1,0 +1,7 @@
+﻿[*.cs]
+
+# CS8604: 가능한 null 참조 인수입니다.
+dotnet_diagnostic.CS8604.severity = none
+
+# CS8602: null 가능 참조에 대한 역참조입니다.
+dotnet_diagnostic.CS8602.severity = none

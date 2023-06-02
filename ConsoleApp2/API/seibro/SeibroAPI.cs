@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RestSharp;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EGIO_DOTNET.API.seibro
 {
-    internal class SeibroAPI : IAPIRequest
+    internal abstract class SeibroAPI : IAPIRequest
     {
         public string? BaseUrl { get; set; }
         public string? ApiID { get; set; }
@@ -24,6 +25,7 @@ namespace EGIO_DOTNET.API.seibro
         {
             return string.Format(baseURLKEY,BaseUrl,ApiKey);
         }
+        public abstract RestClient Fn_RestClient();
     }
 }
 
