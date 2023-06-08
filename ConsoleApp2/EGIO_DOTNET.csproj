@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -8,12 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MySql.Data" Version="8.0.33" />
     <PackageReference Include="RestSharp" Version="110.2.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="API\seibro\dls\" />
-    <Folder Include="Controller\" />
+    <Folder Include="Controller\bond\" />
   </ItemGroup>
 
   <ItemGroup>
