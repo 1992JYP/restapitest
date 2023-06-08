@@ -17,13 +17,13 @@ namespace EGIO_DOTNET.API.seibro
         private string baseURLKEY = "{0}?key={1}";
         public SeibroAPI()
         {
-            BaseUrl = "http://seibro.or.kr/OpenPlatform/callOpenAPI.jsp";
-            ApiKey = "2eae9f793f9c774cab31dda30f744d3310d55500369297339b27bba9c2f7ab63";
+            BaseUrl = "http://seibro.or.kr/OpenPlatform/callOpenAPI.jsp"; 
+            ApiKey = Environment.GetEnvironmentVariable("SEIBRO", EnvironmentVariableTarget.Machine);
             //ApiID = "getBondOptionXrcInfo";
         }
         public string Fn_SettingUrl()
         {
-            return string.Format(baseURLKEY,BaseUrl,ApiKey);
+            return string.Format(baseURLKEY,BaseUrl, ApiKey);
         }
         public abstract RestClient Fn_RestClient();
     }

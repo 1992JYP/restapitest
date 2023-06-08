@@ -11,6 +11,11 @@ namespace EGIO_DOTNET.API.seibro.bond
     {
         public BondDtlInfo() { }
 
+        public BondDtlInfo(string date)
+        {
+
+        }
+
         public override RestClient Fn_RestClient()
         {
             throw new NotImplementedException();

@@ -14,9 +14,4 @@ controller.Fn_Contol();
 mysql mysql = new mysql();
 Console.WriteLine(mysql.selectTest());
 
-
-
-string? vartest;
-vartest = Environment.GetEnvironmentVariable("SEIBRO");
-Console.WriteLine(vartest);
 Console.ReadLine();
