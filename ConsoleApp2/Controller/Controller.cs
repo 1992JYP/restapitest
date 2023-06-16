@@ -12,13 +12,11 @@ namespace EGIO_DOTNET.Controller
     internal class Controller
     {
         public Controller() { }
-        public async void Fn_Contol()
+        public virtual async void Fn_Contol()
         {
             Bondinfo bondinfo1 = new("20230531");
 
             RestClient restClient = bondinfo1.Fn_RestClient();
-
-            Console.WriteLine(bondinfo1.Fn_returnUrl());
 
             RestRequest request = new RestRequest();
             RestResponse response = await restClient.GetAsync(request);
@@ -29,10 +27,8 @@ namespace EGIO_DOTNET.Controller
 
             XmlNodeList xmlNodeList = xml.GetElementsByTagName("ISIN");
 
-            int i = 0;
             foreach (XmlNode xmlNode in xmlNodeList)
             {
-                Console.WriteLine(i++);
                 Console.WriteLine(xmlNode.Attributes["value"].Value);
             }
         }

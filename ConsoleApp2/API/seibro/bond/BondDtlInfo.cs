@@ -9,16 +9,32 @@ namespace EGIO_DOTNET.API.seibro.bond
 {
     internal class BondDtlInfo : SeibroAPI
     {
-        public BondDtlInfo() { }
+        static string returnURLFormat = "{0}&apiId={1}&params=ISIN:{2}";
 
-        public BondDtlInfo(string date)
+        public BondDtlInfo()
         {
-
+            ApiID = "getBondStatInfo";
         }
 
+        public BondDtlInfo(string isin)
+        {
+            ApiID = "getBondStatInfo";
+
+            Params = isin;
+        }
+        public string Fn_returnUrl()
+        {
+            string finURL = string.Format(returnURLFormat, Fn_SettingUrl(), ApiID, Params);
+            return finURL;
+        }
+            
         public override RestClient Fn_RestClient()
         {
-            throw new NotImplementedException();
+            RestClientOptions restClientOptions = new(Fn_returnUrl());
+            restClientOptions.MaxTimeout = 1000;
+            RestClient restClient = new(restClientOptions);
+
+            return restClient;
         }
     }
 }
