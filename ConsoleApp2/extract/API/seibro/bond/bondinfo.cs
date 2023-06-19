@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EGIO_DOTNET.API.seibro.bond
+namespace EGIO_DOTNET.extract.API.seibro.bond
 {
     internal class Bondinfo : SeibroAPI
     {
