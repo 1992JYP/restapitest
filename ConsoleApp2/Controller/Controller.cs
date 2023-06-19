@@ -1,4 +1,4 @@
-﻿using EGIO_DOTNET.API.seibro.bond;
+﻿using EGIO_DOTNET.extract.API.seibro.bond;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -20,7 +20,7 @@ namespace EGIO_DOTNET.Controller
 
             RestRequest request = new RestRequest();
             RestResponse response = await restClient.GetAsync(request);
-            Console.WriteLine(response.Content + "\n\n\n\n\n\n");
+            Console.WriteLine(response.Content + "\n\n\n");
 
             XmlDocument xml = new XmlDocument();
             xml.LoadXml(response.Content);

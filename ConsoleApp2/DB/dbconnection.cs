@@ -3,6 +3,7 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +14,7 @@ using YamlDotNet.Serialization.NamingConventions;
 
 namespace EGIO_DOTNET.DB
 {
-    internal class mysql
+    internal class dbconnection
     {
         public IDbConnection sqlConnection;
         public string connectionString = "";
@@ -22,29 +23,31 @@ namespace EGIO_DOTNET.DB
 
         public static string dotnetpath = "C:/Users/202212002/source/repos/ConsoleApp2/ConsoleApp2/DB";
 
-        public mysql(string inputDBMS = "Mysql")
+        public dbconnection(string inputDBMS = "Mysql")
         {
             string connectionFilePath = dotnetpath+"/connection.yaml";
-
+            
             using (var readYaml = new StreamReader(connectionFilePath))
             {
                 var yaml = new YamlStream();
                 yaml.Load(readYaml);
 
-                var mapping = (YamlMappingNode)yaml.Documents[0].RootNode;
+                YamlMappingNode mapping = (YamlMappingNode)yaml.Documents[0].RootNode["DBConnection"];
 
                 string host, port, username, password, database, server;
                 DBMS = inputDBMS;
 
+                Console.WriteLine(mapping.ToString() );
+
                 if (DBMS.Equals("Mysql"))
                 {
-
                     host = mapping.Children[new YamlScalarNode(DBMS)]["Host"].ToString();
                     port = mapping.Children[new YamlScalarNode(DBMS)]["Port"].ToString();
                     username = mapping.Children[new YamlScalarNode(DBMS)]["Username"].ToString();
                     password = mapping.Children[new YamlScalarNode(DBMS)]["Password"].ToString();
                     database = mapping.Children[new YamlScalarNode(DBMS)]["Database"].ToString();
                     connectionString = $"Server={host};Port={port};Database={database};Uid={username};Pwd={password};";
+                    Console.WriteLine(connectionString);
                 }
                 else
                 {
@@ -53,12 +56,12 @@ namespace EGIO_DOTNET.DB
                     password = mapping.Children[new YamlScalarNode(DBMS)]["Password"].ToString();
                     database = mapping.Children[new YamlScalarNode(DBMS)]["Database"].ToString();
 
-                    connectionString = $"TrustServerCertificate=true;Server={server};Database={database};Uid={username};Pwd={password};";
+                    connectionString = $"TrustServerCertificate=true;Server={server};Uid={username};Pwd={password};";
 
                 }
 
             }
-        }
+    }
         public string selectTest()
         {
             string returnString = "";

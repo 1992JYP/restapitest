@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EGIO_DOTNET.API
+namespace EGIO_DOTNET.extract.API
 {
     internal interface IAPIRequest
     {

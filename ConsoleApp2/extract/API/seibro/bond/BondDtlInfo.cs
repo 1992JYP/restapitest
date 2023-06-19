@@ -5,24 +5,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EGIO_DOTNET.API.seibro.bond
+namespace EGIO_DOTNET.extract.API.seibro.bond
 {
-    internal class Bondinfo : SeibroAPI
+    internal class BondDtlInfo : SeibroAPI
     {
-        public string? Tetstest;
-        static string returnURLFormat = "{0}&apiId={1}&params=ISSU_DT:{2}";
-        public Bondinfo(string date)
+        static string returnURLFormat = "{0}&apiId={1}&params=ISIN:{2}";
+
+        public BondDtlInfo()
         {
-            ApiID = "getBondIssuInfo";
-
-            Params = date;
-
-        }
-        public Bondinfo(string date, string Params)
-        {
-
+            ApiID = "getBondStatInfo";
         }
 
+        public BondDtlInfo(string isin)
+        {
+            ApiID = "getBondStatInfo";
+
+            Params = isin;
+        }
         public string Fn_returnUrl()
         {
             string finURL = string.Format(returnURLFormat, Fn_SettingUrl(), ApiID, Params);

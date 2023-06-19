@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="API\seibro\dls\" />
+    <Folder Include="extract\API\seibro\dls\" />
   </ItemGroup>
 
   <ItemGroup>

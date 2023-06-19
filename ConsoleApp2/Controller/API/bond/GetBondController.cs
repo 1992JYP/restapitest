@@ -1,4 +1,4 @@
-﻿using EGIO_DOTNET.API.seibro.bond;
+﻿using EGIO_DOTNET.extract.API.seibro.bond;
 using EGIO_DOTNET.DB;
 using RestSharp;
 using System;
@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
-namespace EGIO_DOTNET.Controller.bond
+namespace EGIO_DOTNET.Controller.API.bond
 {
     internal class GetBondController : Controller
     {
@@ -43,7 +43,7 @@ namespace EGIO_DOTNET.Controller.bond
 
                 //xmlDocument.LoadXml(xmlNodeList1[0].Value) ;
 
-                mysql mysql1 = new();
+                dbconnection mysql1 = new();
                 mysql1.insertXMLTest(xmlNodeList1);
 
                 //Console.WriteLine(xmlDocument);
